@@ -41,7 +41,7 @@ public class PauseControl : MonoBehaviour
         if(gameIsPaused)
         {
             Time.timeScale = 0;
-                       
+                                   
             transform.parent.GetComponent<FirstPersonMovement>().enabled = false;
             GetComponent<MouseCamLook>().enabled = false;
 
@@ -51,6 +51,13 @@ public class PauseControl : MonoBehaviour
             PausePanel.SetActive(true);
             AreYouSurePanel.SetActive(false);
             TutorialPanel.SetActive(true);
+
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+
+            foreach(AudioSource a in audios)
+                {
+                    a.Pause();
+                }
 
 
         }
@@ -71,6 +78,13 @@ public class PauseControl : MonoBehaviour
 
         PausePanel.SetActive(false);
         AreYouSurePanel.SetActive(false);
+
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+
+        foreach(AudioSource a in audios)
+        {
+            a.Play();
+        }
     }
 
     public void QuitButton()
