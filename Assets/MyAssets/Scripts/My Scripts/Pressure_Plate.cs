@@ -11,9 +11,7 @@ public class Pressure_Plate : MonoBehaviour
 
     public AudioSource goalTextSound;
     public AudioSource pressurePlateSound;
-    
-
-
+    public AudioSource doorOpenSound;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -21,10 +19,13 @@ public class Pressure_Plate : MonoBehaviour
         {
             myAnimationController.SetBool("open", true);
             myAnimationController2.SetBool("down", true);
+
             GoalText.text = "Reach the Courtyard";
             goalTextSound.Play();
             gameObject.GetComponent<BoxCollider>().enabled = false;
+
             pressurePlateSound.Play();
+            doorOpenSound.Play();
              
         }
 
@@ -33,6 +34,7 @@ public class Pressure_Plate : MonoBehaviour
             myAnimationController.SetBool("open", true);
             myAnimationController2.SetBool("down", true);
             pressurePlateSound.Play();
+            doorOpenSound.Play();                       
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
