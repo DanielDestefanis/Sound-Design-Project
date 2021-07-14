@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-
-
 public class PauseControl : MonoBehaviour
 {
     public static bool gameIsPaused;
@@ -14,15 +12,30 @@ public class PauseControl : MonoBehaviour
     public GameObject AreYouSurePanel;
     public GameObject TutorialPanel;
     public GameObject YouWinPanel;
-    public Canvas Canvas;    
-       
+    public Canvas Canvas; 
+
+    public bool pause;
+
+    public bool ignoreListenerPause;
+
+    public AudioSource ResumeUI;
+    public AudioSource RestartUI;
+    public AudioSource QuitUI;
+
+    public AudioSource AreYouSureYes;
+    public AudioSource AreYouSureNo;
+    public AudioSource YouWin;
+
+
+
+             
 
     public void Start()
     {
         PausePanel.SetActive(false);
         AreYouSurePanel.SetActive(false);
-        Resume();
-
+        Resume();      
+        
 
     }
        
@@ -32,6 +45,7 @@ public class PauseControl : MonoBehaviour
         {
             gameIsPaused = !gameIsPaused;
             PauseGame();
+            
            
         }       
     }
@@ -52,6 +66,14 @@ public class PauseControl : MonoBehaviour
             AreYouSurePanel.SetActive(false);
             TutorialPanel.SetActive(true);
 
+            AudioListener.pause = true;
+
+            ResumeUI.ignoreListenerPause = true;
+            RestartUI.ignoreListenerPause = true;
+            QuitUI.ignoreListenerPause = true;
+            AreYouSureYes.ignoreListenerPause = true;
+            AreYouSureNo.ignoreListenerPause = true;
+            YouWin.ignoreListenerPause = true;
             
         }
             
@@ -71,7 +93,9 @@ public class PauseControl : MonoBehaviour
         Cursor.visible = false;
 
         PausePanel.SetActive(false);
-        AreYouSurePanel.SetActive(false);        
+        AreYouSurePanel.SetActive(false);
+
+        AudioListener.pause = false;       
     }
 
     public void QuitButton()
