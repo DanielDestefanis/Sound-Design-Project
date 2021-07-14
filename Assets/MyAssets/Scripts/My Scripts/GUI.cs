@@ -22,7 +22,10 @@ public class GUI : MonoBehaviour
     private bool playing = true;
 
     //Counts number of pressure plates player has activated in the courtyard area
-    private int pressurePlateCount = 0;  
+    private int pressurePlateCount = 0;
+
+
+    public AudioSource goalTextSound;  
 
 
     public void Start()
@@ -32,6 +35,8 @@ public class GUI : MonoBehaviour
 
         //Showing the tutorial panel on level start
         TutorialPanel.gameObject.SetActive(true);
+
+        goalTextSound = GetComponent<AudioSource>();
 
     }
 
@@ -63,13 +68,18 @@ public class GUI : MonoBehaviour
         //updates the goal text based on what goal is completed
         if (other.CompareTag("PressurePlate"))
         {
-            GoalText.text = "Find the holy treasure" + "Reach the Courtyard";
+            GoalText.text = "Reach the Courtyard";
+            goalTextSound.Play(); 
+            gameObject.GetComponent<BoxCollider>().enabled = false;          
         }
 
         if (other.CompareTag("CourtyardEntry"))
         {
             GoalText.text = "Find the pressure\n\n" + "plates \n\n" + "Pressure Plates: " + pressurePlateCount + "/3"; 
+            goalTextSound.Play();
+            Destroy(other);
         }
+
 
         if(other.CompareTag("PressurePlateOpenArea"))
         {
@@ -80,17 +90,28 @@ public class GUI : MonoBehaviour
 
         if(pressurePlateCount == 3)
         {
-            GoalText.text = "Enter the tower";
+            if(other.CompareTag("PressurePlateOpenArea"))
+            {
+                GoalText.text = "Enter the tower";
+                goalTextSound.Play();
+            }
+            
+            
+            
         }
 
         if(other.CompareTag("TowerEntry"))
         {
             GoalText.text = "Ascend";
+            goalTextSound.Play();
+            Destroy(other);
         }
 
         if(other.CompareTag("TowerTop"))
         {
             GoalText.text = "open the chest";
+            goalTextSound.Play();
+            Destroy(other);
         }
         if (other.CompareTag("Finish"))
         {

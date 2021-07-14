@@ -9,6 +9,10 @@ public class Pressure_Plate : MonoBehaviour
     [SerializeField] private Animator myAnimationController2;
     public Text GoalText;
 
+    public AudioSource goalTextSound;
+    public AudioSource pressurePlateSound;
+    
+
 
 
     public void OnTriggerEnter(Collider other)
@@ -17,13 +21,19 @@ public class Pressure_Plate : MonoBehaviour
         {
             myAnimationController.SetBool("open", true);
             myAnimationController2.SetBool("down", true);
-            GoalText.text = "Find the holy treasure \n\n Reach the Courtyard";
+            GoalText.text = "Reach the Courtyard";
+            goalTextSound.Play();
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            pressurePlateSound.Play();
+             
         }
 
         if (other.CompareTag("Player"))
         {
             myAnimationController.SetBool("open", true);
             myAnimationController2.SetBool("down", true);
+            pressurePlateSound.Play();
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
      
