@@ -14,7 +14,7 @@ public class PauseControl : MonoBehaviour
     public GameObject AreYouSurePanel;
     public GameObject TutorialPanel;
     public GameObject YouWinPanel;
-    public Canvas Canvas;
+    public Canvas Canvas;    
        
 
     public void Start()
@@ -52,15 +52,9 @@ public class PauseControl : MonoBehaviour
             AreYouSurePanel.SetActive(false);
             TutorialPanel.SetActive(true);
 
-            AudioSource[] audios = FindObjectsOfType<AudioSource>();
-
-            foreach(AudioSource a in audios)
-                {
-                    a.Pause();
-                }
-
-
+            
         }
+            
         else
         {
             Resume();         
@@ -77,14 +71,7 @@ public class PauseControl : MonoBehaviour
         Cursor.visible = false;
 
         PausePanel.SetActive(false);
-        AreYouSurePanel.SetActive(false);
-
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
-
-        foreach(AudioSource a in audios)
-        {
-            a.Play();
-        }
+        AreYouSurePanel.SetActive(false);        
     }
 
     public void QuitButton()
