@@ -21,7 +21,6 @@ public class Sounds4 : MonoBehaviour
         if (Input.GetKeyDown("space"))
          {
              playing = true;
-             Audio.loop = true;
              Audio.Play();
          }
 
@@ -29,7 +28,6 @@ public class Sounds4 : MonoBehaviour
         {
             playing = false;
             Audio.loop = false;
-            Audio.Play();
         }
     }
     

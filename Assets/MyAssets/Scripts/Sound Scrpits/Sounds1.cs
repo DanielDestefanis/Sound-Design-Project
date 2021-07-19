@@ -17,7 +17,7 @@ public class Sounds1 : MonoBehaviour
     }
     void Update()
     {
-        Audio.pitch = Random.Range(0.5f, 2.5f);
+        Audio.pitch = Random.Range(0.7f, 2.5f);
 
         if (Input.GetKeyDown("s"))
          {

@@ -23,7 +23,6 @@ public class Sounds3 : MonoBehaviour
             playing = true;
             Audio.loop = true;
             Audio.Play();
-            Debug.Log("FAG");
         }
         if (Input.GetKeyDown("w"))
         {
