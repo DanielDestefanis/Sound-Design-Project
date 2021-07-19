@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,8 +25,9 @@ public class GUI : MonoBehaviour
     private int pressurePlateCount = 0;
 
 
-    public AudioSource goalTextSound;  
-
+    public AudioSource goalTextSound;
+    public AudioSource endMusic;
+    
 
     public void Start()
     {
@@ -84,7 +85,7 @@ public class GUI : MonoBehaviour
         if(other.CompareTag("PressurePlateOpenArea"))
         {
             pressurePlateCount++;            
-            GoalText.text = "Find the pressure\n\n" + "plates \n\n" + "Pressure Plates: " + pressurePlateCount + "/3";
+            GoalText.text = "Find the pressure\n\n" + "plates \n\n" + "Pressure Plates: " + pressurePlateCount + "/3";            
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
 
@@ -110,7 +111,8 @@ public class GUI : MonoBehaviour
         if(other.CompareTag("TowerTop"))
         {
             GoalText.text = "open the chest";
-            goalTextSound.Play();
+            //goalTextSound.Play();
+            endMusic.Play();
             Destroy(other);
         }
         if (other.CompareTag("Finish"))
