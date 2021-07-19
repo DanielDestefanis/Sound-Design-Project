@@ -13,6 +13,8 @@ TagManager:
   - Shimmer
   - ItemPile
   - torch
+  - EnterWindZone
+  - ExitWindZone
   layers:
   - Default
   - TransparentFX
