@@ -17,7 +17,7 @@ public class Sounds2 : MonoBehaviour
     }
     void Update()
     {
-
+        Audio.pitch = Random.Range(0.7f, 1.5f);
         if (Input.GetKeyDown("d"))
         {
             playing = true;
