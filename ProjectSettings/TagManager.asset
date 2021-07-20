@@ -15,6 +15,7 @@ TagManager:
   - torch
   - EnterWindZone
   - ExitWindZone
+  - HedgeMaze
   layers:
   - Default
   - TransparentFX
